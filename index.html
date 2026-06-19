@@ -1,0 +1,1203 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Александр & Катерина — Свадебное приглашение</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght=0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght=200;300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --olive-dark: #202d1d;
+        --olive-medium: #3b4b35;
+        --olive-light: #62755b;
+        --cream: #ffffff;
+        --cream-dark: #ebdccb;
+
+        /* Сургучное благородное золото */
+        --gold: linear-gradient(135deg, #e5c060 0%, #b88b21 50%, #825f07 100%);
+
+        --line-art-color: rgba(251, 249, 244, 0.25);
+
+        /* Дресс-код */
+        --dc-olive: #516149;
+        --dc-brown: #785943;
+        --dc-beige: #dfd7cc;
+        --dc-blue: #93a7b5;
+        --dc-pink: #d19799;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        font-family: "Montserrat", sans-serif;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("159e20f4-9bf6-471e-be7c-d4c9ec3e0b9d.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+
+        color: var(--cream);
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 300;
+        letter-spacing: 1px;
+      }
+
+      /* ---------------------------------- */
+      /* РЕАЛИСТИЧНЫЙ КОНВЕРТ С ТЕМНЫМ ЛЕСОМ*/
+      /* ---------------------------------- */
+      #envelope-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background:
+          linear-gradient(rgba(12, 18, 11, 0.75), rgba(8, 12, 8, 0.92)),
+          url("https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1800&auto=format&fit=crop");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        perspective: 1500px;
+      }
+
+      .envelope-wrapper {
+        position: relative;
+        width: 460px;
+        height: 320px;
+        perspective: 1500px;
+        transform-style: preserve-3d;
+        transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        z-index: 2;
+      }
+
+      @media (max-width: 500px) {
+        .envelope-wrapper {
+          transform: scale(0.78);
+        }
+      }
+      @media (max-width: 380px) {
+        .envelope-wrapper {
+          transform: scale(0.66);
+        }
+      }
+
+      /* Основа конверта с текстурой матовой дизайнерской бумаги */
+      .envelope {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: var(--olive-dark);
+        background-image: radial-gradient(
+          rgba(255, 255, 255, 0.03) 1px,
+          transparent 0
+        );
+        background-size: 4px 4px;
+        border-radius: 6px;
+        box-shadow:
+          0 30px 70px rgba(0, 0, 0, 0.65),
+          inset 0 1px 2px rgba(255, 255, 255, 0.1);
+        transform-style: preserve-3d;
+      }
+
+      .flap {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+      }
+
+      /* Реалистичные тени на границах склейки бумаги */
+      .flap.top {
+        background-color: #2b3d27;
+        background-image: radial-gradient(
+          rgba(255, 255, 255, 0.03) 1px,
+          transparent 0
+        );
+        background-size: 4px 4px;
+        clip-path: polygon(0 0, 50% 56%, 100% 0);
+        z-index: 4;
+        transform-origin: top;
+        transition:
+          transform 0.8s cubic-bezier(0.77, 0, 0.175, 1),
+          z-index 0.2s;
+        border-radius: 6px 6px 0 0;
+        filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.4));
+      }
+
+      .flap.bottom {
+        background-color: #1a2518;
+        clip-path: polygon(0 100%, 50% 48%, 100% 100%);
+        z-index: 3;
+        filter: drop-shadow(0 -3px 8px rgba(0, 0, 0, 0.3));
+      }
+
+      .flap.left {
+        background-color: #172115;
+        clip-path: polygon(0 0, 52% 50%, 0 100%);
+        z-index: 3;
+        filter: drop-shadow(3px 0 6px rgba(0, 0, 0, 0.25));
+      }
+
+      .flap.right {
+        background-color: #1c2919;
+        clip-path: polygon(100% 0, 48% 50%, 100% 100%);
+        z-index: 3;
+        filter: drop-shadow(-3px 0 6px rgba(0, 0, 0, 0.25));
+      }
+
+      /* Письмо внутри */
+      .letter {
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        background: linear-gradient(135deg, #ffffff 0%, #f7f4eb 100%);
+        z-index: 2;
+        border-radius: 4px;
+        padding: 30px 20px;
+        text-align: center;
+        box-shadow:
+          inset 0 0 20px rgba(0, 0, 0, 0.05),
+          0 10px 20px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateY(0) scale(0.96);
+        transition:
+          transform 1.1s cubic-bezier(0.19, 1, 0.22, 1),
+          z-index 0.3s;
+      }
+
+      .letter .invite-tag {
+        font-size: 10px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--olive-light);
+        margin-bottom: 12px;
+        font-weight: 600;
+      }
+      .letter .names {
+        font-size: 26px;
+        color: var(--olive-dark);
+        margin-bottom: 6px;
+      }
+      .letter .guest-field {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 24px;
+        font-style: italic;
+        color: #8a6543;
+        border-bottom: 1px dashed var(--olive-light);
+        padding-bottom: 4px;
+        margin-bottom: 15px;
+        min-width: 150px;
+      }
+      .letter .action-text {
+        font-size: 9px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #9c958c;
+        margin-top: auto;
+        font-weight: 600;
+      }
+
+      /* Реалистичный 3D сургуч */
+      .wax-seal {
+        position: absolute;
+        bottom: 110px;
+        left: calc(50% - 34px);
+        width: 68px;
+        height: 68px;
+        background: var(--gold);
+
+        /* Эффект неровных краев выдавленного воска */
+        border-radius: 48% 52% 50% 50% / 51% 49% 52% 48%;
+        z-index: 5;
+
+        /* Сложные тени: внешняя глубокая, внутренняя для объема краев */
+        box-shadow:
+          0 10px 25px rgba(0, 0, 0, 0.55),
+          inset 2px 2px 4px rgba(255, 255, 255, 0.4),
+          inset -3px -3px 6px rgba(0, 0, 0, 0.4);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ebd18a;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 19px;
+        font-weight: bold;
+        cursor: pointer;
+        user-select: none;
+
+        /* Внутреннее тиснение букв */
+        text-shadow:
+          -1px -1px 1px rgba(0, 0, 0, 0.7),
+          1px 1px 1px rgba(255, 255, 255, 0.4);
+        transition: all 0.3s ease;
+      }
+      .wax-seal:hover {
+        transform: scale(1.05);
+        filter: brightness(1.1);
+      }
+
+      /* Анимации шагов */
+      .envelope-wrapper.step-open-flap .flap.top {
+        transform: rotateX(180deg);
+        z-index: 1;
+        filter: drop-shadow(0 -5px 5px rgba(0, 0, 0, 0.2));
+      }
+      .envelope-wrapper.step-open-flap .wax-seal {
+        opacity: 0;
+        transform: scale(0.5);
+        pointer-events: none;
+      }
+      .envelope-wrapper.step-extract-letter .letter {
+        transform: translateY(-175px) scale(1.06);
+        z-index: 5;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+      }
+
+      #envelope-overlay.fade-out {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-30px);
+      }
+
+      /* ---------------------------------- */
+      /* РАССТАНОВКА SVG ГРАФИКИ            */
+      /* ---------------------------------- */
+      .line-art {
+        position: absolute;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .la-flower-left-1 {
+        top: 40px;
+        left: -80px;
+        width: 330px;
+        animation: sway-slow 14s infinite ease-in-out alternate;
+      }
+      .la-branch-right-1 {
+        top: 780px;
+        right: -40px;
+        width: 140px;
+        animation: branch-sway 10s infinite ease-in-out alternate;
+      }
+      .la-butterfly-right-1 {
+        top: 460px;
+        right: 5%;
+        width: 120px;
+        animation: float-slow 12s infinite ease-in-out;
+      }
+      .la-flower-left-2 {
+        top: 1450px;
+        left: -90px;
+        width: 310px;
+        animation: sway-slow 16s infinite ease-in-out alternate;
+      }
+      .la-branch-left-2 {
+        top: 2000px;
+        left: -30px;
+        width: 130px;
+        transform: scaleX(-1);
+        animation: branch-sway-rev 12s infinite ease-in-out alternate;
+      }
+      .la-butterfly-left-2 {
+        top: 1150px;
+        left: 4%;
+        width: 110px;
+        animation: float-slow-rev 14s infinite ease-in-out;
+      }
+      .la-flower-right-3 {
+        top: 2550px;
+        right: -80px;
+        width: 330px;
+        transform: scaleX(-1);
+        animation: sway-reverse 15s infinite ease-in-out alternate;
+      }
+
+      .line-art svg {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .line-art .custom-stroke {
+        stroke: var(--line-art-color);
+        stroke-width: 1.1;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      @keyframes sway-slow {
+        0% {
+          transform: rotate(-3deg) translateY(0);
+        }
+        100% {
+          transform: rotate(3deg) translateY(-5px);
+        }
+      }
+      @keyframes sway-reverse {
+        0% {
+          transform: scaleX(-1) rotate(0deg);
+        }
+        100% {
+          transform: scaleX(-1) rotate(-3deg) translateY(-6px);
+        }
+      }
+      @keyframes branch-sway {
+        0% {
+          transform: rotate(-2deg) skewX(-1deg);
+        }
+        100% {
+          transform: rotate(4deg) skewX(2deg);
+        }
+      }
+      @keyframes branch-sway-rev {
+        0% {
+          transform: scaleX(-1) rotate(2deg);
+        }
+        100% {
+          transform: scaleX(-1) rotate(-4deg);
+        }
+      }
+      @keyframes float-slow {
+        0%,
+        100% {
+          transform: translateY(0) translateX(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-18px) translateX(10px) rotate(5deg);
+        }
+      }
+      @keyframes float-slow-rev {
+        0%,
+        100% {
+          transform: scaleX(-1) translateY(0) translateX(0) rotate(0deg);
+        }
+        50% {
+          transform: scaleX(-1) translateY(-22px) translateX(-8px) rotate(-6deg);
+        }
+      }
+
+      /* ---------------------------------- */
+      /* СТИЛИ КОНТЕНТА                     */
+      /* ---------------------------------- */
+      #main-site {
+        opacity: 0;
+        transition: opacity 2s ease;
+        position: relative;
+        min-height: 100vh;
+      }
+      #main-site.loaded {
+        opacity: 1;
+      }
+
+      .section-block {
+        max-width: 650px;
+        margin: 0 auto;
+        padding: 100px 24px;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      .reveal-item {
+        opacity: 0;
+        transform: translateY(40px) scale(0.98);
+        transition:
+          opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform, opacity;
+      }
+
+      .reveal-item.revealed {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .delay-1 {
+        transition-delay: 0.1s;
+      }
+      .delay-2 {
+        transition-delay: 0.25s;
+      }
+      .delay-3 {
+        transition-delay: 0.4s;
+      }
+      .delay-4 {
+        transition-delay: 0.55s;
+      }
+
+      .section-divider {
+        width: 0px;
+        height: 1px;
+        background-color: rgba(251, 249, 244, 0.25);
+        margin: 0 auto;
+        transition: width 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .section-divider.revealed {
+        width: 80px;
+      }
+
+      .tagline {
+        font-size: 11px;
+        letter-spacing: 7px;
+        text-transform: uppercase;
+        color: var(--cream-dark);
+        margin-bottom: 30px;
+        font-weight: 400;
+        opacity: 0.9;
+      }
+      .main-title {
+        font-size: 4.6rem;
+        line-height: 1.1;
+        color: var(--cream);
+        font-weight: 300;
+        margin-bottom: 25px;
+      }
+      .wedding-date-text {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 26px;
+        font-style: italic;
+        color: var(--cream);
+        margin-top: 15px;
+      }
+      .section-title {
+        font-size: 3rem;
+        color: var(--cream);
+        margin-bottom: 30px;
+        font-weight: 300;
+      }
+      .body-text {
+        font-size: 1.15rem;
+        line-height: 1.85;
+        font-weight: 300;
+        color: rgba(251, 249, 244, 0.95);
+      }
+
+      @media (max-width: 550px) {
+        .main-title {
+          font-size: 3.3rem;
+        }
+        .section-title {
+          font-size: 2.3rem;
+        }
+      }
+
+      /* Локация */
+      .event-date {
+        font-size: 3.6rem;
+        font-weight: 300;
+        color: var(--cream);
+        margin-bottom: 6px;
+      }
+      .event-time {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--cream-dark);
+        margin-bottom: 40px;
+      }
+      .venue-name {
+        font-size: 2.3rem;
+        color: var(--cream);
+        margin-bottom: 10px;
+        font-weight: 400;
+      }
+
+      .map-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: var(--gold);
+        color: #ffffff;
+        padding: 16px 38px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 600;
+        transition: all 0.4s ease;
+        box-shadow: 0 6px 20px rgba(170, 124, 17, 0.3);
+        margin-top: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .map-btn:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 25px rgba(170, 124, 17, 0.6);
+      }
+
+      /* Тайминг */
+      .timeline-box {
+        position: relative;
+        max-width: 420px;
+        margin: 40px auto 0;
+        padding-left: 45px;
+        text-align: left;
+      }
+      .timeline-box::before {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: 12px;
+        bottom: 12px;
+        width: 1px;
+        background: rgba(251, 249, 244, 0.3);
+      }
+
+      .timeline-row {
+        position: relative;
+        margin-bottom: 50px;
+        opacity: 0;
+        transform: translateX(-25px);
+        transition:
+          opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .timeline-row.revealed {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .timeline-row:last-child {
+        margin-bottom: 0;
+      }
+      .timeline-row::before {
+        content: "";
+        position: absolute;
+        left: -44px;
+        top: 6px;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: #465740;
+        border: 2px solid var(--cream);
+        z-index: 3;
+      }
+      .tm-hour {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.9rem;
+        color: var(--cream);
+        margin-bottom: 5px;
+      }
+      .tm-info {
+        font-size: 1.15rem;
+        font-weight: 300;
+        color: rgba(251, 249, 244, 0.9);
+      }
+
+      /* Дресс-код */
+      .palette-row {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        flex-wrap: wrap;
+        margin-top: 45px;
+      }
+
+      .color-elem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90px;
+        opacity: 0;
+        transform: scale(0.6);
+        transition:
+          opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+          transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .color-elem.revealed {
+        opacity: 1;
+        transform: scale(1);
+      }
+      .color-circle {
+        width: 66px;
+        height: 66px;
+        border-radius: 50%;
+        border: 2px solid var(--cream);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        margin-bottom: 12px;
+        transition: transform 0.3s ease;
+      }
+      .color-elem:hover .color-circle {
+        transform: scale(1.1) translateY(-4px);
+      }
+      .color-title {
+        font-size: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        opacity: 0.85;
+      }
+
+      /* Пожелания */
+      .wishes-box {
+        max-width: 540px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .alcohol-txt {
+        margin-top: 30px;
+        font-style: italic;
+        color: var(--cream-dark);
+      }
+
+      /* Контакты */
+      .profiles-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-top: 45px;
+      }
+      @media (max-width: 560px) {
+        .profiles-layout {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+      }
+
+      .person-card {
+        text-align: center;
+      }
+      .p-role {
+        font-size: 11px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--cream-dark);
+        margin-bottom: 12px;
+      }
+      .p-name {
+        font-size: 2.2rem;
+        color: var(--cream);
+        margin-bottom: 12px;
+      }
+      .p-link {
+        font-size: 1.15rem;
+        color: var(--cream);
+        text-decoration: none;
+        display: inline-block;
+        opacity: 0.95;
+        transition: color 0.3s ease;
+      }
+      .p-link:hover {
+        color: var(--cream-dark);
+      }
+
+      footer {
+        text-align: center;
+        padding: 100px 0 40px;
+        font-size: 11px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        opacity: 0.5;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ЭКРАН С КОНВЕРТОМ -->
+    <div id="envelope-overlay">
+      <div class="envelope-wrapper" id="envelope-box">
+        <div class="envelope">
+          <div class="flap top"></div>
+          <div class="flap left"></div>
+          <div class="flap right"></div>
+          <div class="flap bottom"></div>
+
+          <div class="letter" id="clickable-letter">
+            <span class="invite-tag">Приглашение</span>
+            <h2 class="names">Александр & Катерина</h2>
+            <span id="letter-guest" class="guest-field">Загрузка...</span>
+            <p
+              style="
+                font-size: 13px;
+                color: var(--olive-dark);
+                font-style: italic;
+              "
+            >
+              Вы приглашены на наше торжество!
+            </p>
+            <span class="action-text" id="action-hint">Нажмите на печать</span>
+          </div>
+        </div>
+        <div class="wax-seal" id="seal-btn">А & К</div>
+      </div>
+    </div>
+
+    <!-- ОСНОВНОЙ САЙТ -->
+    <div id="main-site">
+      <!-- Блок 1: Пышные цветы -->
+      <div class="line-art la-flower-left-1">
+        <svg
+          viewBox="0 0 500 500"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="custom-stroke"
+            d="M250,280 C230,240 210,210 235,180 C250,160 280,175 285,200 C300,175 330,185 320,215 C345,215 360,245 335,270 C355,290 330,335 295,315 C285,335 240,330 235,300 C210,305 200,275 225,255 Z"
+          />
+          <path
+            class="custom-stroke"
+            d="M260,220 C245,200 270,185 280,210 C295,190 320,210 305,230 C320,235 315,260 295,255 C290,275 265,265 265,245 C250,245 250,225 260,220 Z"
+          />
+          <path
+            class="custom-stroke"
+            d="M170,200 C150,150 200,110 230,150 C260,110 310,140 290,195 C330,180 370,220 330,270 C350,320 290,360 250,310 C200,350 150,300 180,260 C140,250 140,190 170,200 Z"
+          />
+          <path
+            class="custom-stroke"
+            d="M240,230 Q225,210 245,195 M275,215 Q290,195 285,220 M290,250 Q315,250 295,265 M255,255 Q245,280 265,270"
+          />
+          <path
+            class="custom-stroke"
+            d="M220,160 Q190,130 215,115 Q240,130 235,160 M280,150 Q310,120 325,145 Q310,170 285,165"
+          />
+          <path
+            class="custom-stroke"
+            d="M195,275 Q150,290 165,320 Q195,310 205,285"
+          />
+        </svg>
+      </div>
+
+      <!-- Блок 2: Веточка -->
+      <div class="line-art la-branch-right-1">
+        <svg
+          viewBox="0 0 200 600"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="custom-stroke"
+            d="M110,30 Q130,100 90,180 Q60,260 115,350 Q140,420 95,490 Q75,530 80,570"
+          />
+          <path
+            class="custom-stroke"
+            d="M110,40 C90,60 70,85 85,115 C95,100 105,75 110,40 Z M85,115 Q100,75 110,40"
+          />
+          <path
+            class="custom-stroke"
+            d="M118,80 C135,65 155,50 160,80 C150,90 135,95 118,80 Z"
+          />
+          <path
+            class="custom-stroke"
+            d="M102,130 C80,140 60,160 68,190 C85,185 95,160 102,130 Z"
+          />
+          <path
+            class="custom-stroke"
+            d="M98,165 C115,180 135,195 125,225 C110,220 105,195 98,165 Z"
+          />
+          <path
+            class="custom-stroke"
+            d="M85,210 C65,215 45,235 50,265 C65,260 75,240 85,210 Z"
+          />
+          <path
+            class="custom-stroke"
+            d="M82,245 C95,265 115,285 105,315 C90,305 88,280 82,245 Z"
+          />
+          <path
+            class="custom-stroke"
+            d="M95,290 C75,310 60,335 72,365 C85,350 90,325 95,290 Z"
+          />
+          <path
+            class="custom-stroke"
+            d="M108,325 C125,345 145,365 132,395 C120,385 115,360 108,325 Z"
+          />
+          <path
+            class="custom-stroke"
+            d="M115,370 C100,400 85,425 100,455 C110,440 112,410 115,370 Z"
+          />
+          <path
+            class="custom-stroke"
+            d="M112,415 C130,430 148,455 135,485 C122,475 118,450 112,415 Z"
+          />
+          <path
+            class="custom-stroke"
+            d="M102,460 C85,480 70,505 88,530 C98,515 100,490 102,460 Z"
+          />
+          <path
+            class="custom-stroke"
+            d="M92,510 C105,530 112,555 98,585 C90,570 92,545 92,510 Z"
+          />
+        </svg>
+      </div>
+
+      <!-- Блок 3: Бабочка -->
+      <div class="line-art la-butterfly-right-1">
+        <svg
+          viewBox="0 0 100 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="custom-stroke"
+            d="M50,40 L50,70 M50,40 Q46,32 40,35 M50,40 Q54,32 60,35"
+          />
+          <path
+            class="custom-stroke"
+            d="M50,45 C42,25 15,22 24,48 C29,60 46,54 50,45 Z"
+          />
+          <path
+            class="custom-stroke"
+            d="M50,49 C44,58 30,68 34,59 C38,50 47,50 50,49 Z"
+          />
+          <path
+            class="custom-stroke"
+            d="M50,45 C58,25 85,22 76,48 C71,60 54,54 50,45 Z"
+          />
+          <path
+            class="custom-stroke"
+            d="M50,49 C56,58 70,68 66,59 C62,50 53,50 50,49 Z"
+          />
+        </svg>
+      </div>
+
+      <!-- Блок 4: Пышные цветы -->
+      <div class="line-art la-flower-left-2">
+        <svg
+          viewBox="0 0 500 500"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="custom-stroke"
+            d="M250,280 C230,240 210,210 235,180 C250,160 280,175 285,200 C300,175 330,185 320,215 Z"
+          />
+          <path
+            class="custom-stroke"
+            d="M170,200 C150,150 200,110 230,150 C260,110 310,140 290,195 Z"
+          />
+        </svg>
+      </div>
+
+      <!-- Блок 5: Веточка -->
+      <div class="line-art la-branch-left-2">
+        <svg
+          viewBox="0 0 200 600"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="custom-stroke"
+            d="M110,30 Q130,100 90,180 Q60,260 115,350 Q140,420 95,490 Q75,530 80,570"
+          />
+          <path
+            class="custom-stroke"
+            d="M110,40 C90,60 70,85 85,115 C95,100 105,75 110,40 Z M85,115 Q100,75 110,40"
+          />
+          <path
+            class="custom-stroke"
+            d="M118,80 C135,65 155,50 160,80 C150,90 135,95 118,80 Z"
+          />
+          <path
+            class="custom-stroke"
+            d="M102,130 C80,140 60,160 68,190 C85,185 95,160 102,130 Z"
+          />
+        </svg>
+      </div>
+
+      <!-- ТЕКСТОВЫЙ КОНТЕНТ -->
+      <header class="section-block">
+        <div class="tagline reveal-item delay-1">Свадебное торжество</div>
+        <h1 class="main-title reveal-item delay-2">
+          Александр <br />& Катерина
+        </h1>
+        <div
+          class="reveal-item delay-3"
+          style="
+            width: 50px;
+            height: 1px;
+            background: rgba(251, 249, 244, 0.3);
+            margin: 25px auto;
+          "
+        ></div>
+        <div class="wedding-date-text reveal-item delay-4">
+          29 августа 2026 года
+        </div>
+      </header>
+
+      <div class="section-divider"></div>
+
+      <section class="section-block">
+        <h2 class="section-title reveal-item" id="guest-greeting">
+          Дорогие Гости!
+        </h2>
+        <p class="body-text reveal-item delay-2">
+          Один день в этом году будет для нас особенным, и мы хотим провести его
+          в кругу самых близких людей. С большим удовольствием приглашаем вас
+          разделить радость этого события на нашей свадьбе!
+        </p>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section class="section-block">
+        <div class="event-date reveal-item">29.08.2026</div>
+        <div class="event-time reveal-item delay-1">
+          Суббота • Начало в 14:00
+        </div>
+        <div
+          class="reveal-item delay-2"
+          style="
+            width: 40px;
+            height: 1px;
+            background: rgba(251, 249, 244, 0.2);
+            margin: 0 auto 35px;
+          "
+        ></div>
+        <div class="venue-name reveal-item delay-2">Restaurant PARK</div>
+        <p class="body-text reveal-item delay-3" style="margin-bottom: 20px">
+          Кільцева дорога, 19
+        </p>
+        <div class="reveal-item delay-4">
+          <a href="https://maps.google.com" target="_blank" class="map-btn">
+            <i class="fa-solid fa-map-location-dot"></i> Найти на карте
+          </a>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section class="section-block">
+        <h2 class="section-title reveal-item">Тайминг дня</h2>
+        <div class="timeline-box">
+          <div class="timeline-row">
+            <div class="tm-hour">14:00</div>
+            <div class="tm-info">Welcome-зона & уютный сбор гостей</div>
+          </div>
+          <div class="timeline-row">
+            <div class="tm-hour">15:00</div>
+            <div class="tm-info">Торжественная церемония росписи</div>
+          </div>
+          <div class="timeline-row">
+            <div class="tm-hour">16:00</div>
+            <div class="tm-info">Праздничный банкет и шоу-программа</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section class="section-block">
+        <h2 class="section-title reveal-item">Дресс-код</h2>
+        <p class="body-text reveal-item delay-1">
+          Для нас очень важна эстетика праздника. Мы будем искренне
+          признательны, если вы поддержите нежную палитру нашего дня:
+        </p>
+        <div class="palette-row">
+          <div class="color-elem">
+            <div class="color-circle" style="background: var(--dc-olive)"></div>
+            <div class="color-title">Оливковый</div>
+          </div>
+          <div class="color-elem">
+            <div class="color-circle" style="background: var(--dc-brown)"></div>
+            <div class="color-title">Терракот</div>
+          </div>
+          <div class="color-elem">
+            <div class="color-circle" style="background: var(--dc-beige)"></div>
+            <div class="color-title">Бежевый</div>
+          </div>
+          <div class="color-elem">
+            <div class="color-circle" style="background: var(--dc-blue)"></div>
+            <div class="color-title">Голубой</div>
+          </div>
+          <div class="color-elem">
+            <div class="color-circle" style="background: var(--dc-pink)"></div>
+            <div class="color-title">Розовый</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section class="section-block">
+        <div class="wishes-box">
+          <h2 class="section-title reveal-item">Наши пожелания</h2>
+          <p class="body-text reveal-item delay-1">
+            Пожалуйста, не тратьте силы на поиск традиционных цветочных букетов.
+            Мы безумно ценим ваше внимание, но цветы, к сожалению, увядают
+            слишком быстро.
+          </p>
+          <p class="body-text alcohol-txt reveal-item delay-2">
+            Будет замечательно, если вместо цветов вы подарите нам бутылочку
+            вашего любимого вина или другого алкогольного напитка. Мы с
+            удовольствием сохраним её для нашей семейной коллекции!
+          </p>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section class="section-block">
+        <h2 class="section-title reveal-item">Ждем обратную связь</h2>
+
+        <div class="profiles-layout">
+          <div class="person-card reveal-item delay-2">
+            <div class="p-role">Жених</div>
+            <div class="p-name">Александр</div>
+            <a href="tel:0954644646" class="p-link">095 464 4646</a>
+          </div>
+
+          <div class="person-card reveal-item delay-3">
+            <div class="p-role">Невеста</div>
+            <div class="p-name">Катерина</div>
+            <a href="tel:0660879399" class="p-link">066 087 9399</a>
+          </div>
+        </div>
+
+        <p
+          class="body-text reveal-item delay-4"
+          style="
+            font-size: 13px;
+            font-style: italic;
+            margin-top: 55px;
+            opacity: 0.7;
+          "
+        >
+          Ждем вас на нашем празднике!
+        </p>
+      </section>
+
+      <footer>
+        <div class="reveal-item">Александр & Катерина • С любовью • 2026</div>
+      </footer>
+    </div>
+
+    <script>
+      function getGuestInfo() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const guest = urlParams.get("guest");
+        if (guest) {
+          const decodedGuest = decodeURIComponent(guest.replace(/\+/g, " "));
+          return {
+            letterName: decodedGuest,
+            greetingName: "Дорогие " + decodedGuest + "!",
+          };
+        }
+        return { letterName: "Дорогие друзья", greetingName: "Дорогие гости!" };
+      }
+
+      const guestData = getGuestInfo();
+      document.getElementById("letter-guest").innerText = guestData.letterName;
+      document.getElementById("guest-greeting").innerText =
+        guestData.greetingName;
+
+      // Логика конверта
+      const envelopeBox = document.getElementById("envelope-box");
+      const sealBtn = document.getElementById("seal-btn");
+      const clickableLetter = document.getElementById("clickable-letter");
+      const actionHint = document.getElementById("action-hint");
+      const overlay = document.getElementById("envelope-overlay");
+      const mainSite = document.getElementById("main-site");
+
+      let currentStep = 0;
+
+      sealBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (currentStep === 0) {
+          envelopeBox.classList.add("step-open-flap");
+          currentStep = 1;
+
+          setTimeout(() => {
+            envelopeBox.classList.add("step-extract-letter");
+            actionHint.innerText = "Открыть приглашение";
+            currentStep = 2;
+          }, 750);
+        }
+      });
+
+      clickableLetter.addEventListener("click", function (e) {
+        if (currentStep === 2) {
+          overlay.classList.add("fade-out");
+          mainSite.classList.add("loaded");
+
+          setTimeout(() => {
+            overlay.style.display = "none";
+            window.scrollTo(0, 1);
+            window.scrollTo(0, 0);
+          }, 1200);
+        }
+      });
+
+      // Наблюдатель скролла
+      const observerOptions = {
+        root: null,
+        threshold: 0.05,
+        rootMargin: "0px 0px -40px 0px",
+      };
+
+      const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+
+            if (entry.target.classList.contains("timeline-box")) {
+              const rows = entry.target.querySelectorAll(".timeline-row");
+              rows.forEach((row, index) => {
+                setTimeout(() => {
+                  row.classList.add("revealed");
+                }, index * 200);
+              });
+            }
+
+            if (entry.target.classList.contains("palette-row")) {
+              const circles = entry.target.querySelectorAll(".color-elem");
+              circles.forEach((circle, index) => {
+                setTimeout(() => {
+                  circle.classList.add("revealed");
+                }, index * 120);
+              });
+            }
+
+            scrollObserver.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document
+        .querySelectorAll(".reveal-item, .section-divider")
+        .forEach((node) => {
+          scrollObserver.observe(node);
+        });
+
+      const tmBox = document.querySelector(".timeline-box");
+      if (tmBox) scrollObserver.observe(tmBox);
+
+      const palRow = document.querySelector(".palette-row");
+      if (palRow) scrollObserver.observe(palRow);
+    </script>
+  </body>
+</html>
