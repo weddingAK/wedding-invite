@@ -24,8 +24,15 @@
         --cream: #ffffff;
         --cream-dark: #ebdccb;
 
-        /* Сургучное благородное золото */
-        --gold: linear-gradient(135deg, #e5c060 0%, #b88b21 50%, #825f07 100%);
+        /* Элегантные бежевые оттенки вместо золота */
+        --beige-accent: #dfd7cc;
+        --beige-dark: #c2b5a3;
+        --beige-gradient: linear-gradient(
+          135deg,
+          #ebdccb 0%,
+          #dfd7cc 50%,
+          #c2b5a3 100%
+        );
 
         --line-art-color: rgba(251, 249, 244, 0.25);
 
@@ -232,44 +239,41 @@
         font-weight: 600;
       }
 
-      /* Реалистичный 3D сургуч */
+      /* Реалистичный 3D сургуч в бежевом матовом цвете */
       .wax-seal {
         position: absolute;
         bottom: 110px;
         left: calc(50% - 34px);
         width: 68px;
         height: 68px;
-        background: var(--gold);
+        background: var(--beige-gradient);
 
-        /* Эффект неровных краев выдавленного воска */
         border-radius: 48% 52% 50% 50% / 51% 49% 52% 48%;
         z-index: 5;
 
-        /* Сложные тени: внешняя глубокая, внутренняя для объема краев */
         box-shadow:
           0 10px 25px rgba(0, 0, 0, 0.55),
-          inset 2px 2px 4px rgba(255, 255, 255, 0.4),
-          inset -3px -3px 6px rgba(0, 0, 0, 0.4);
+          inset 2px 2px 4px rgba(255, 255, 255, 0.6),
+          inset -3px -3px 6px rgba(0, 0, 0, 0.3);
 
         display: flex;
         justify-content: center;
         align-items: center;
-        color: #ebd18a;
+        color: var(--olive-dark);
         font-family: "Cormorant Garamond", serif;
         font-size: 19px;
         font-weight: bold;
         cursor: pointer;
         user-select: none;
 
-        /* Внутреннее тиснение букв */
         text-shadow:
-          -1px -1px 1px rgba(0, 0, 0, 0.7),
-          1px 1px 1px rgba(255, 255, 255, 0.4);
+          -0.5px -0.5px 0.5px rgba(0, 0, 0, 0.15),
+          0.5px 0.5px 0.5px rgba(255, 255, 255, 0.6);
         transition: all 0.3s ease;
       }
       .wax-seal:hover {
         transform: scale(1.05);
-        filter: brightness(1.1);
+        filter: brightness(1.05);
       }
 
       /* Анимации шагов */
@@ -540,12 +544,13 @@
         font-weight: 400;
       }
 
+      /* Кнопка карты в бежевом матовом стиле */
       .map-btn {
         display: inline-flex;
         align-items: center;
         gap: 12px;
-        background: var(--gold);
-        color: #ffffff;
+        background: var(--beige-gradient);
+        color: var(--olive-dark);
         padding: 16px 38px;
         border-radius: 30px;
         text-decoration: none;
@@ -554,13 +559,14 @@
         text-transform: uppercase;
         font-weight: 600;
         transition: all 0.4s ease;
-        box-shadow: 0 6px 20px rgba(170, 124, 17, 0.3);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
         margin-top: 25px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.4);
       }
       .map-btn:hover {
         transform: translateY(-4px);
-        box-shadow: 0 12px 25px rgba(170, 124, 17, 0.6);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+        background: linear-gradient(135deg, #ffffff 0%, #ebdccb 100%);
       }
 
       /* Тайминг */
@@ -983,7 +989,11 @@
           Кільцева дорога, 19
         </p>
         <div class="reveal-item delay-4">
-          <a href="https://maps.google.com" target="_blank" class="map-btn">
+          <a
+            href="https://maps.app.goo.gl/UbxCBVaxgbP1v39p7"
+            target="_blank"
+            class="map-btn"
+          >
             <i class="fa-solid fa-map-location-dot"></i> Найти на карте
           </a>
         </div>
@@ -1024,7 +1034,7 @@
           </div>
           <div class="color-elem">
             <div class="color-circle" style="background: var(--dc-brown)"></div>
-            <div class="color-title">Терракот</div>
+            <div class="color-title">Коричневый</div>
           </div>
           <div class="color-elem">
             <div class="color-circle" style="background: var(--dc-beige)"></div>
@@ -1062,7 +1072,10 @@
       <div class="section-divider"></div>
 
       <section class="section-block">
-        <h2 class="section-title reveal-item">Ждем обратную связь</h2>
+        <h2 class="section-title reveal-item">Подтверждение участия</h2>
+        <p class="body-text reveal-item delay-1" style="margin-bottom: 40px">
+          Пожалуйста, сообщите нам о вашем присутствии до 1 августа
+        </p>
 
         <div class="profiles-layout">
           <div class="person-card reveal-item delay-2">
