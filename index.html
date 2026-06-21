@@ -675,11 +675,31 @@
         max-width: 540px;
         margin: 0 auto;
         text-align: center;
+        background: rgba(
+          32,
+          45,
+          29,
+          0.6
+        ); /* Полупрозрачный оливково-темный фон */
+        backdrop-filter: blur(8px); /* Красивое размытие фона за текстом */
+        -webkit-backdrop-filter: blur(8px);
+        padding: 30px 24px;
+        border-radius: 16px; /* Закругленные аккуратные углы */
+        border: 1px solid rgba(251, 249, 244, 0.15); /* Тонкая элегантная рамка */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+      .wishes-box .body-text {
+        font-size: 1.25rem; /* Увеличили размер шрифта */
+        line-height: 1.7;
+        font-weight: 400; /* Сделали буквы чуть плотнее */
+        color: #ffffff; /* Максимально белый чистый цвет для контраста */
       }
       .alcohol-txt {
-        margin-top: 30px;
-        font-style: italic;
-        color: var(--cream-dark);
+        margin-top: 20px;
+        font-weight: 500; /* Еще немного плотности для важного акцента */
+        color: var(
+          --cream-dark
+        ) !important; /* Нежный кремовый оттенок, но без курсива */
       }
 
       /* Контакты */
@@ -1063,8 +1083,8 @@
           </p>
           <p class="body-text alcohol-txt reveal-item delay-2">
             Будет замечательно, если вместо цветов вы подарите нам бутылочку
-            вашего любимого вина или другого алкогольного напитка. Мы с
-            удовольствием сохраним её для нашей семейной коллекции!
+            вашего любимого алкогольного напитка. Мы с удовольствием сохраним её
+            для нашей семейной коллекции!
           </p>
         </div>
       </section>
@@ -1112,17 +1132,113 @@
     <script>
       function getGuestInfo() {
         const urlParams = new URLSearchParams(window.location.search);
-        const guest = urlParams.get("guest");
-        if (guest) {
-          const decodedGuest = decodeURIComponent(guest.replace(/\+/g, " "));
+        const guestParam = urlParams.get("guest");
+
+        // Если ссылка пустая
+        if (!guestParam) {
           return {
-            letterName: decodedGuest,
-            greetingName: "Дорогие " + decodedGuest + "!",
+            letterName: "Дорогие друзья",
+            greetingName: "Дорогие гости!",
           };
         }
-        return { letterName: "Дорогие друзья", greetingName: "Дорогие гости!" };
+
+        // Декодируем текст из ссылки
+        const decoded = decodeURIComponent(
+          guestParam.replace(/\+/g, " "),
+        ).trim();
+
+        // Разбиваем гостей по запятой
+        const namesArray = decoded
+          .split(",")
+          .map((name) => name.trim())
+          .filter((name) => name.length > 0);
+
+        // 1. ЕСЛИ ГОСТЬ ОДИН (нет запятых в ссылке)
+        if (namesArray.length === 1) {
+          const name = namesArray[0];
+          const lowerName = name.toLowerCase();
+
+          // Список МУЖСКИХ имен, которые заканчиваются на А/Я.
+          // Если твоего друга зовут как-то иначе (например, Лёня), просто допиши его сюда через запятую!
+          const maleNames = [
+            "рома",
+            "роман",
+            "дима",
+            "дмитрий",
+            "паша",
+            "павел",
+            "саша",
+            "александр",
+            "никита",
+            "илья",
+            "данила",
+            "данил",
+            "тема",
+            "артем",
+            "коля",
+            "николай",
+            "петя",
+            "петр",
+            "сережа",
+            "сергей",
+            "андрюша",
+            "андрей",
+            "леха",
+            "алексей",
+            "влад",
+            "владислав",
+            "олег",
+            "игорь",
+          ];
+
+          // Проверяем, есть ли имя в мужском списке
+          const isMale = maleNames.includes(lowerName);
+
+          // Если имя заканчивается на А/Я и его НЕТ в мужском списке — это женщина
+          const isFemale =
+            (lowerName.endsWith("а") || lowerName.endsWith("я")) && !isMale;
+
+          if (isFemale) {
+            return {
+              letterName: name,
+              greetingName: "Дорогая " + name + "!",
+            };
+          } else {
+            return {
+              letterName: name,
+              greetingName: "Дорогой " + name + "!",
+            };
+          }
+        }
+        // 2. ЕСЛИ ГОСТЕЙ ДВОЕ (например: Рома, Оля)
+        else if (namesArray.length === 2) {
+          const combinedNames = namesArray[0] + " и " + namesArray[1];
+          return {
+            letterName: combinedNames,
+            greetingName: "Дорогие " + combinedNames + "!",
+          };
+        }
+        // 3. ЕСЛИ ГОСТЕЙ ТРИ И БОЛЬШЕ (например: Рома, Оля, Дима)
+        else {
+          const lastName = namesArray.pop();
+          const combinedNames = namesArray.join(", ") + " и " + lastName;
+
+          // Если ты написал "Семья Ивановых", то слово "Дорогие" в начале не ставится
+          if (decoded.toLowerCase().startsWith("семья")) {
+            return {
+              letterName: decoded,
+              greetingName: decoded + "!",
+            };
+          }
+
+          return {
+            letterName: combinedNames,
+            greetingName: "Дорогие " + combinedNames + "!",
+          };
+        }
       }
 
+      // Применяем данные гостя на странице
       const guestData = getGuestInfo();
       document.getElementById("letter-guest").innerText = guestData.letterName;
       document.getElementById("guest-greeting").innerText =
